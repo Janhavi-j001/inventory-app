@@ -1,11 +1,12 @@
 pipeline {
     agent any
 
-    stage('Clone Repo') {
-    steps {
-        git branch: 'main', 
-            credentialsId: 'github-creds', 
-            url: 'https://github.com/janhavi-j001/inventory-app.git'
+    stages {
+        stage('Clone Repo') {
+            steps {
+                git branch: 'main', 
+                    credentialsId: 'github-creds', 
+                    url: 'https://github.com/janhavi-j001/inventory-app.git'
             }
         }
 
