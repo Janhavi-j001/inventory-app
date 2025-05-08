@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs "Node18"   // This matches the name you gave in Jenkins Global Tool Configuration
+    }
+
     stages {
         stage('Clone Repo') {
             steps {
