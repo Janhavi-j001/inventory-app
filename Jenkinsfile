@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/yourusername/inventory-app.git'
+                git 'https://github.com/janhavi-j001/inventory-app.git'
             }
         }
 
