@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repo') {
+            steps {
+                git 'https://github.com/yourusername/inventory-app.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh 'npm test'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t inventory-app:v1 .'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'docker run -d -p 5000:5000 inventory-app:v1'
+            }
+        }
+    }
+}

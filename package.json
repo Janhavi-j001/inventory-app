@@ -1,0 +1,16 @@
+{
+  "name": "inventory-app",
+  "version": "1.0.0",
+  "description": "Simple Inventory App with Node.js",
+  "main": "backend/app.js",
+  "scripts": {
+    "start": "node backend/app.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
