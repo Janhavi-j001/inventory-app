@@ -2,13 +2,10 @@ FROM node:18
 
 WORKDIR /app
 
-COPY backend/package.json ./backend/
-COPY backend/package-lock.json ./backend/
-
-RUN cd backend && npm install
-
-COPY backend/ ./backend/
-COPY frontend/ ./frontend/
-
+COPY package.json .
 EXPOSE 5000
+RUN npm install
+
+COPY . .
+
 CMD ["npm", "start"]
