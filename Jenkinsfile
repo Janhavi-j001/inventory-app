@@ -2,7 +2,12 @@ pipeline {
     agent any
 
     tools {
-        nodejs "Node18"   // This matches the name you gave in Jenkins Global Tool Configuration
+        nodejs "Node18"   
+    }
+
+    environment {
+        IMAGE_NAME = "Janhavi001/inventory-app"
+        IMAGE_TAG = "v1"
     }
 
     stages {
@@ -28,13 +33,28 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t inventory-app:v1 .'
+                sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    sh '''
+                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                        docker push $IMAGE_NAME:$IMAGE_TAG
+                    '''
+                }
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 5000:5000 inventory-app:v1'
+                sh '''
+                    docker stop inventory-app || true
+                    docker rm inventory-app || true
+                    docker run -d -p 5000:5000 --name inventory-app $IMAGE_NAME:$IMAGE_TAG
+                '''
             }
         }
     }
