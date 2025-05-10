@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        IMAGE_NAME = "Janhavi001/inventory-app"
+        IMAGE_NAME = "janhavi001/inventory-app"
         IMAGE_TAG = "v1"
     }
 
