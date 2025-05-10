@@ -1,113 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory Management System</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inventory Management System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
-            line-height: 1.6;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+    }
 
-        header {
-            background-color: #1f2d3d;
-            color: #fff;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #1f2d3d;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
+    .navbar h1 {
+      font-size: 1.8rem;
+    }
 
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
+    .navbar ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
 
-        main {
-            max-width: 1000px;
-            margin: 60px auto;
-            padding: 40px;
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        }
+    .navbar ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
 
-        main h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #2c3e50;
-        }
+    .navbar ul li a:hover {
+      color: #00b4d8;
+    }
 
-        main p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
+    /* Hero Section */
+    .hero {
+      background-color: #ffffff;
+      text-align: center;
+      padding: 60px 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
 
-        ul {
-            padding-left: 20px;
-        }
+    .hero h2 {
+      font-size: 2.5rem;
+      color: #1f2d3d;
+      margin-bottom: 15px;
+    }
 
-        ul li {
-            font-size: 1.05rem;
-            margin-bottom: 10px;
-            list-style-type: disc;
-        }
+    .hero p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 25px;
+    }
 
-        .highlight {
-            color: #0077cc;
-            font-weight: 600;
-        }
+    .hero .btn {
+      padding: 12px 24px;
+      font-size: 1rem;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #1f2d3d;
-            color: #ccc;
-            font-size: 0.95rem;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            left: 0;
-        }
-    </style>
+    .hero .btn:hover {
+      background-color: #005fa3;
+      transform: translateY(-2px);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .container h3 {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    .container p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    ul.features {
+      padding-left: 20px;
+    }
+
+    ul.features li {
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+    }
+
+    .highlight {
+      color: #0077cc;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #1f2d3d;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>Inventory Management System</h1>
-        <p>Seamlessly manage stock, orders, and analytics.</p>
-    </header>
+  <nav class="navbar">
+    <h1>IMS Dashboard</h1>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
 
-    <main>
-        <h2>About This Application</h2>
-        <p>Our inventory management platform is designed to streamline operations for small and medium-sized businesses. Monitor stock levels, receive low inventory alerts, and generate insightful reports to make informed decisions in real time.</p>
+  <section class="hero">
+    <h2>Inventory Management System</h2>
+    <p>Seamlessly manage stock, orders, and analytics for your business.</p>
+    <button class="btn">Get Started</button>
+  </section>
 
-        <h2 class="highlight">Key Features:</h2>
-        <ul>
-            <li>Real-Time Inventory Tracking</li>
-            <li>Automated Low Stock Notifications</li>
-            <li>Comprehensive Product Listings</li>
-            <li>Customizable Reports & Performance Analytics</li>
-        </ul>
-    </main>
+  <section class="container">
+    <h3>About This Application</h3>
+    <p>Our inventory management platform helps small and medium businesses streamline operations. Monitor stock levels, receive alerts, and generate insightful reports in real time.</p>
 
-    <footer>
-        &copy; 2025 Inventory Management Inc. | All rights reserved.
-    </footer>
+    <h3 class="highlight">Key Features:</h3>
+    <ul class="features">
+      <li>✔️ Real-Time Inventory Tracking</li>
+      <li>✔️ Automated Low Stock Notifications</li>
+      <li>✔️ Comprehensive Product Listings</li>
+      <li>✔️ Customizable Reports & Performance Analytics</li>
+    </ul>
+  </section>
+
+  <footer>
+    &copy; 2025 Inventory Management Inc. | All rights reserved.
+  </footer>
 
 </body>
 </html>
