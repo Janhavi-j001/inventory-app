@@ -17,54 +17,85 @@
       font-family: 'Inter', sans-serif;
       background-color: #f5f7fa;
       color: #333;
-      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
     }
 
     .navbar {
-      height: 90px;
+      width: 100%;
       background-color: #1f2d3d;
+      height: 100px;
       color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 30px;
+      padding: 20px 0;
+      text-align: center;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
-    .navbar ul {
-      display: flex;
-      list-style: none;
-      gap: 25px;
+
+
+    .navbar-title h3 {
+      font-size: 14px;
+      font-weight: normal;
+      color: #ccc;
+      padding-top: 10px;
     }
 
-    .navbar ul li a {
-      color: #fff;
+    .top-section {
+      display: flex;
+      flex: 1;
+    }
+
+    .sidebar {
+      width: 170px;
+      margin-top: 0px;
+      background-color: #e3ebf6; /* Light blue-gray matching palette */
+      padding: 30px 15px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      border-right: 1px solid #ccc;
+    }
+
+    .sidebar a {
+      color: #1f2d3d;
       text-decoration: none;
       font-weight: 500;
+      font-size: 16px;
       transition: color 0.3s ease;
     }
 
-    .navbar ul li a:hover {
-      color: #00b4d8;
+    .sidebar a:hover {
+      color: #0077cc;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .dashboard {
-      height: calc(100vh - 60px);
+      flex: 1;
       display: flex;
-      padding: 30px;
+      padding: 25px;
       gap: 20px;
       justify-content: space-between;
-      align-items: center;
+      flex-wrap: wrap;
     }
 
     .card {
       flex: 1;
+      max-width: 30%;
       background-color: white;
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      padding: 25px;
+      padding: 20px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      height: 85%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -76,13 +107,13 @@
     }
 
     .card h2 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       color: #1f2d3d;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     .card p, .card ul li {
-      font-size: 1rem;
+      font-size: 0.95rem;
       margin-bottom: 10px;
     }
 
@@ -91,7 +122,7 @@
     }
 
     .btn {
-      padding: 10px 20px;
+      padding: 8px 16px;
       background-color: #0077cc;
       color: white;
       border: none;
@@ -105,55 +136,91 @@
     .btn:hover {
       background-color: #005fa3;
     }
+
+    .footer {
+      background-color: #1f2d3d;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      font-size: 14px;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 900px) {
+      .dashboard {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .card {
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <nav class="navbar">
-    <h1 style="text-align: center;">Inventory Management System</h1>
-    <h3 style="text-align: center;">Track and manage your inventory with ease.</h3>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Stats</a></li>
-      <li><a href="#">Reports</a></li>
-      <li><a href="#">Settings</a></li>
-    </ul>
-  </nav>
+  <div class="container">
 
-  <section class="dashboard">
-    <div class="card">
-      <h2>Overview</h2>
-      <p>Welcome to your Inventory Dashboard. Here you can monitor key business metrics, stock levels, and trends.</p>
-      <ul>
-        <li>Total Products: <strong>1245</strong></li>
-        <li>Pending Orders: <strong>58</strong></li>
-        <li>Suppliers: <strong>12</strong></li>
-      </ul>
-      <button class="btn">Manage Stock</button>
+    <nav class="navbar">
+      <div class="navbar-title">
+        <h1>Inventory Management System</h1>
+        <h3 style="color: #e3ebf6;">Track and manage your inventory with ease.</h3>
+      </div>
+    </nav>
+
+    <div class="top-section">
+      <aside class="sidebar">
+        <a href="#">Home</a>
+        <a href="#">Stats</a>
+        <a href="#">Reports</a>
+        <a href="#">Settings</a>
+        <a href="#">Logout</a>
+      </aside>
+
+      <div class="main-content">
+        <section class="dashboard">
+          <div class="card">
+            <h2>Overview</h2>
+            <p>Welcome to your Inventory Dashboard. Here you can monitor key business metrics, stock levels, and trends.</p>
+            <ul>
+              <li>Total Products: <strong>1245</strong></li>
+              <li>Pending Orders: <strong>58</strong></li>
+              <li>Suppliers: <strong>12</strong></li>
+            </ul>
+            <button class="btn">Manage Stock</button>
+          </div>
+
+          <div class="card">
+            <h2>Analytics</h2>
+            <p>Get real-time insights and performance tracking. Plan and forecast your next moves efficiently.</p>
+            <ul>
+              <li>Low Stock Alerts: <strong>7 items</strong></li>
+              <li>Top-Selling Product: <strong>Notebook A5</strong></li>
+              <li>Revenue This Week: <strong>$14,230</strong></li>
+            </ul>
+            <button class="btn">View Reports</button>
+          </div>
+
+          <div class="card">
+            <h2>Inventory Summary</h2>
+            <p>Detailed listing and status of current inventory. Easy access to product actions and analytics.</p>
+            <ul>
+              <li>Warehouse 1: <strong>560 items</strong></li>
+              <li>Warehouse 2: <strong>685 items</strong></li>
+              <li>Damaged: <strong>23 items</strong></li>
+            </ul>
+            <button class="btn">View Inventory</button>
+          </div>
+        </section>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>Analytics</h2>
-      <p>Get real-time insights and performance tracking. Plan and forecast your next moves efficiently.</p>
-      <ul>
-        <li>Low Stock Alerts: <strong>7 items</strong></li>
-        <li>Top-Selling Product: <strong>Notebook A5</strong></li>
-        <li>Revenue This Week: <strong>$14,230</strong></li>
-      </ul>
-      <button class="btn">View Reports</button>
-    </div>
+    <footer class="footer">
+      &copy; 2025 InventoryPro Inc. | Built with care and Reactivity 💼
+    </footer>
 
-    <div class="card">
-      <h2>Inventory Summary</h2>
-      <p>Detailed listing and status of current inventory. Easy access to product actions and analytics.</p>
-      <ul>
-        <li>Warehouse 1: <strong>560 items</strong></li>
-        <li>Warehouse 2: <strong>685 items</strong></li>
-        <li>Damaged: <strong>23 items</strong></li>
-      </ul>
-      <button class="btn">View Inventory</button>
-    </div>
-  </section>
+  </div>
 
 </body>
 </html>
