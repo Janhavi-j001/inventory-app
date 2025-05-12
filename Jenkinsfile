@@ -48,6 +48,13 @@ pipeline {
             }
         }
 
+        stage('Push to Docker Hub') {
+            steps {
+                sh 'docker push $IMAGE_NAME:$IMAGE_TAG'
+            }
+        }
+
+
 
         stage('Deploy') {
             steps {
