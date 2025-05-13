@@ -2,6 +2,162 @@
 <html lang="en">
 <head>
     <title>Inventory management App - Updated UI</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inventory Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .navbar {
+      width: 100%;
+      background-color: #1f2d3d;
+      height: 100px;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+
+
+    .navbar-title h3 {
+      font-size: 14px;
+      font-weight: normal;
+      color: #ccc;
+      padding-top: 10px;
+    }
+
+    .top-section {
+      display: flex;
+      flex: 1;
+    }
+
+    .sidebar {
+      width: 170px;
+      margin-top: 0px;
+      background-color: #e3ebf6; /* Light blue-gray matching palette */
+      padding: 30px 15px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      border-right: 1px solid #ccc;
+    }
+
+    .sidebar a {
+      color: #1f2d3d;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      color: #0077cc;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dashboard {
+      flex: 1;
+      display: flex;
+      padding: 25px;
+      gap: 20px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      flex: 1;
+      max-width: 30%;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      color: #1f2d3d;
+      margin-bottom: 10px;
+    }
+
+    .card p, .card ul li {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .card ul {
+      padding-left: 20px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+      align-self: flex-start;
+    }
+
+    .btn:hover {
+      background-color: #005fa3;
+    }
+
+    .footer {
+      background-color: #1f2d3d;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      font-size: 14px;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 900px) {
+      .dashboard {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .card {
+        max-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
 
