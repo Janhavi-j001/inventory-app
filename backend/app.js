@@ -11,6 +11,7 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Handle root route (serves index.html)
 app.get('/', (req, res) => {
+    res.send('Inventory Management App is Running-- updated message');
     res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
 });
 
